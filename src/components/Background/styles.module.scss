@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(
+    rgba($color: $color-pink-600, $alpha: 0.16),
+    $color-gray-0
+  );
+  z-index: -1;
+
+  .imageContainer {
+    width: 100%;
+    height: 17rem;
+    background-image: url("/background/keys-small.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
+
+    @media screen and (width > 700px) {
+      background-image: url("/background/keys-big.svg");
+      background-position: center;
+    }
+  }
+}
