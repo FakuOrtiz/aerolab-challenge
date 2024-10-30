@@ -1,0 +1,21 @@
+.containerFilterList {
+  display: flex;
+  list-style: none;
+
+  li {
+    button {
+      font-size: 14px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 100px;
+      border: none;
+      background: none;
+      color: $color-violet-900;
+      font-weight: 500;
+
+      &.active {
+        background: $color-violet-900;
+        color: $color-gray-0;
+      }
+    }
+  }
+}

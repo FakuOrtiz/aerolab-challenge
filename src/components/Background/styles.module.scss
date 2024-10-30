@@ -13,6 +13,7 @@
     background-image: url("/background/keys-small.svg");
     background-repeat: no-repeat;
     background-position: top right;
+    @include appears-from-top;
 
     @media screen and (width > 700px) {
       background-image: url("/background/keys-big.svg");

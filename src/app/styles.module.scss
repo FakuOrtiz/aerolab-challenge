@@ -1,0 +1,11 @@
+.savedGamesTitle {
+  font-size: 20px;
+  font-weight: 600;
+  @include text-gradient($color-gradient);
+  width: 100%;
+  margin: 2rem 0;
+
+  @media screen and (width > 700px) {
+    text-align: center;
+  }
+}

@@ -5,11 +5,15 @@
   font: inherit;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-img, video, svg {
+img,
+video,
+svg {
   display: block;
   height: auto;
   max-width: 100%;
@@ -21,18 +25,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100lvh;
+  width: 100%;
 }
 
 main {
-  width: 100%;
-  min-height: 100lvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
+main,
+header,
+footer {
+  padding: 1.6rem;
+  width: 100%;
+  max-width: 40rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
@@ -49,7 +65,8 @@ button {
   cursor: pointer;
 }
 
-input:not([type="checkbox"]):focus, select:focus {
+input:not([type="checkbox"]):focus,
+select:focus {
   outline: none;
 }
 
@@ -57,6 +74,11 @@ li {
   list-style-position: inside;
 }
 
-input, textarea, button, select, a, div {
+input,
+textarea,
+button,
+select,
+a,
+div {
   -webkit-tap-highlight-color: transparent;
 }

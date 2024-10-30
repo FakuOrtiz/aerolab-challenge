@@ -1,0 +1,39 @@
+// Animation Appears
+
+@keyframes from-top {
+  from {
+    transform: translate(0, -1rem);
+    opacity: 0.5;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-bottom {
+  from {
+    transform: translate(0, 1rem);
+    opacity: 0.5;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@mixin appears-from-top {
+  animation: from-top 0.4s ease;
+}
+
+@mixin appears-from-bottom {
+  animation: from-bottom 0.4s ease;
+}
+
+// Text gradient
+@mixin text-gradient($color) {
+  background: $color;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

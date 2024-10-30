@@ -1,0 +1,32 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  text-decoration: none;
+  @include appears-from-bottom;
+
+  div {
+    border: 2px solid $color-pink-600;
+    border-radius: 8px;
+    width: 3rem;
+    height: 3rem;
+    padding: 3px;
+    box-shadow: 0px 4px 16px 0px rgba($color: $color-pink-100, $alpha: 0.4);
+    background: linear-gradient(
+      180deg,
+      $color-gray-0 21.25%,
+      rgba($color: $color-pink-600, $alpha: 0.2) 181.25%
+    );
+
+    img {
+      filter: invert(13%) sepia(44%) saturate(3298%) hue-rotate(255deg)
+        brightness(88%) contrast(103%);
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    @include text-gradient($color-gradient);
+  }
+}
