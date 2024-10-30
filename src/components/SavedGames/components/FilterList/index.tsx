@@ -1,17 +1,37 @@
 import { useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import useFilter from "../../hooks/useFilter";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const FilterList = () => {
   const activeIndicator = useRef<HTMLDivElement>(null);
 
   const { filter, showLatest, showNewest, showOldest } = useFilter();
+  const { screenWidth } = useWindowSize();
 
+  // Listen when filter list is at top of screen
   useEffect(() => {
-    if (document.readyState === "complete") {
-      onMoveActiveIndicator();
+    const handleScroll = () => {
+      const containerList = document.getElementsByClassName(
+        styles.containerFilterList
+      )[0] as HTMLLIElement;
+
+      if (containerList.getBoundingClientRect().top === 16) {
+        containerList.classList.add(styles.fixed);
+      } else {
+        containerList.classList.remove(styles.fixed);
+      }
+    };
+
+    if (screenWidth <= 700) {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
     }
-  }, [filter]);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [screenWidth]);
 
   const filterElements = [
     {
@@ -40,12 +60,17 @@ const FilterList = () => {
     },
   ];
 
+  // Move indicator when filter updates
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      onMoveActiveIndicator();
+    }
+  }, [filter]);
+
   const onMoveActiveIndicator = () => {
-    const activeElement = document.getElementsByClassName(
+    const { offsetWidth, offsetLeft } = document.getElementsByClassName(
       styles.activeOption
     )[0] as HTMLLIElement;
-
-    const { offsetWidth, offsetLeft } = activeElement;
 
     activeIndicator.current!.style.left = `calc(${offsetLeft}px - 5px)`;
 

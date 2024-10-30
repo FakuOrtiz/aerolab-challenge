@@ -1,9 +1,19 @@
 .containerFilterList {
   display: flex;
   list-style: none;
-  border-radius: 100px;
+  width: max-content;
   padding: 5px;
-  position: relative;
+  border-radius: 100px;
+
+  position: sticky;
+  top: 1.6rem;
+  z-index: 1;
+  background: rgba($color: $color-gray-0, $alpha: 0.85);
+  backdrop-filter: blur(10px);
+
+  &.fixed {
+    margin: 0 auto;
+  }
 
   li {
     font-size: 14px;
