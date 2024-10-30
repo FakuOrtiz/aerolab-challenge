@@ -79,6 +79,7 @@ textarea,
 button,
 select,
 a,
-div {
+div,
+[role="button"] {
   -webkit-tap-highlight-color: transparent;
 }

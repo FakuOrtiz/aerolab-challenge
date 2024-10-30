@@ -11,17 +11,11 @@ const useFilter = () => {
   const showNewest = () => setFilter("NEWEST");
   const showOldest = () => setFilter("OLDEST");
 
-  const isLatestActive = filter === "LATEST";
-  const isNewestActive = filter === "NEWEST";
-  const isOldestActive = filter === "OLDEST";
-
   return {
+    filter,
     showLatest,
     showNewest,
     showOldest,
-    isLatestActive,
-    isNewestActive,
-    isOldestActive,
   };
 };
 

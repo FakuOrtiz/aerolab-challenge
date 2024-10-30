@@ -1,21 +1,37 @@
 .containerFilterList {
   display: flex;
   list-style: none;
+  border-radius: 100px;
+  padding: 5px;
+  position: relative;
 
   li {
-    button {
-      font-size: 14px;
-      padding: 0.6rem 1.2rem;
-      border-radius: 100px;
-      border: none;
-      background: none;
-      color: $color-violet-900;
-      font-weight: 500;
+    font-size: 14px;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background: none;
+    color: $color-violet-900;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 100px;
+    cursor: pointer;
+    user-select: none;
 
-      &.active {
-        background: $color-violet-900;
-        color: $color-gray-0;
-      }
+    &.activeOption {
+      z-index: 1;
+      color: $color-gray-0;
     }
+  }
+
+  .activeIndicator {
+    background: $color-violet-900;
+    color: $color-gray-0;
+    border-radius: inherit;
+    position: absolute;
+
+    height: calc(100% - 10px);
+    transform: translateX(5px);
+
+    transition: all 0.2s ease;
   }
 }

@@ -4,14 +4,22 @@ import { SavedGame } from "../models/savedGames";
 const useSavedGames = () => {
   const [savedGames, setSavedGames] = useState<SavedGame[] | null>(null);
 
-  // const { filter, isLatestActive, isNewestActive, isOldestActive } = useFilter();
-
   useEffect(() => {
-    setSavedGames([{ name: "" }, { name: "" }, { name: "" }]);
+    setSavedGames([
+      { id: 1, name: "Ejemplo 1" },
+      { id: 2, name: "Ejemplo 2" },
+      { id: 3, name: "Ejemplo 3" },
+    ]);
   }, []);
 
+  // const { filter } = useFilter();
+
   // useEffect(() => {
-  //   setSavedGames([{ name: "" }, { name: "" }, { name: "" }]);
+  //   setSavedGames([
+  //     { id: 1, name: "Ejemplo 1" },
+  //     { id: 2, name: "Ejemplo 2" },
+  //     { id: 3, name: "Ejemplo 3" },
+  //   ]);
   // }, [filter]);
 
   return {
