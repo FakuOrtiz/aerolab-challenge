@@ -15,7 +15,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(async (config) => {
   let token = localStorage.getItem("bearerToken");
 
-  if (!token) {
+  if (!token || token === "undefined") {
     token = (await getApiToken()) as string;
     localStorage.setItem("bearerToken", token);
   }
