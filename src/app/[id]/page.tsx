@@ -1,18 +1,15 @@
-"use client";
-
 import GameDetails from "@/components/GameDetails";
-import { useParams } from "next/navigation";
 
-const GameDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+const GameDetailsPage = async ({ params }: Props) => {
+  const { id } = await params;
 
   console.log(id);
 
-  return (
-    <>
-      <GameDetails />
-    </>
-  );
+  return <GameDetails />;
 };
 
 export default GameDetailsPage;
