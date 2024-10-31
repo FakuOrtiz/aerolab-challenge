@@ -1,10 +1,38 @@
-interface Cover {
+export interface ResultGame {
+  id: number;
+  name: string;
+  cover?: Image;
+}
+
+export interface Game {
+  id: number;
+  artworks: Image[];
+  first_release_date: number;
+  genres: Element[];
+  involved_companies: InvolvedCompany[];
+  name: string;
+  platforms: Element[];
+  rating: number;
+  similar_games: SimilarGame[];
+  summary: string;
+}
+
+interface Image {
   id: number;
   image_id: string;
 }
 
-export interface SearchedGame {
+interface Element {
   id: number;
   name: string;
-  cover?: Cover;
+}
+
+interface InvolvedCompany {
+  id: number;
+  company: Element;
+}
+
+interface SimilarGame {
+  id: number;
+  cover: Image;
 }

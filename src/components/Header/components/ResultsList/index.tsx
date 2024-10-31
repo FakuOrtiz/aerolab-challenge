@@ -1,11 +1,11 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { SearchedGame } from "@/services/game/game.model";
+import { ResultGame } from "@/services/game/game.model";
 import { ReactMouseEvent } from "@/constants/customTypes";
 
 interface Props {
-  games: SearchedGame[];
+  games: ResultGame[];
   removeInputFocus: () => void;
 }
 

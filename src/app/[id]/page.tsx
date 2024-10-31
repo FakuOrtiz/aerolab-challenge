@@ -7,9 +7,7 @@ interface Props {
 const GameDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
 
-  console.log(id);
-
-  return <GameDetails />;
+  return <GameDetails id={id} />;
 };
 
 export default GameDetailsPage;
