@@ -6,6 +6,7 @@ export interface ResultGame {
 
 export interface Game {
   id: number;
+  cover?: Image;
   artworks: Image[];
   first_release_date: number;
   genres: Element[];

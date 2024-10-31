@@ -1,0 +1,38 @@
+.ul {
+  width: 100%;
+  margin: 2.4rem 0;
+  list-style: none;
+
+  li {
+    padding: 1rem 1.2rem;
+    border: 1px solid $color-violet-50;
+    border-radius: 100px;
+    align-items: center;
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-right: 0.8rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      filter: invert(16%) sepia(52%) saturate(4831%) hue-rotate(264deg)
+        brightness(91%) contrast(92%);
+    }
+
+    h3 {
+      color: $color-violet-600;
+      font-weight: 500;
+      font-size: 14px;
+
+      span {
+        color: $color-violet-900;
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+  }
+}

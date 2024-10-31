@@ -3,19 +3,24 @@ import { Game } from "@/models/game.model";
 import { useEffect, useState } from "react";
 
 const useGameDetails = (id: string) => {
-  const [game, setGame] = useState<Game>();
+  const [game, setGame] = useState<Game | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getGame = async () => {
-      const game = await searchGames<Game>({ type: "DETAILS", id });
+      setIsLoading(true);
 
-      setGame(game);
+      const game = await searchGames<Game[]>({ type: "DETAILS", id });
+
+      setGame(game[0]);
+
+      setIsLoading(false);
     };
 
     getGame();
   }, [id]);
 
-  return { game };
+  return { game, isLoading };
 };
 
 export default useGameDetails;

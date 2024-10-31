@@ -29,6 +29,7 @@ export const searchGames = async <T>(params: Params): Promise<T> => {
       fields
         name,
         rating,
+        cover.image_id,
         genres.name,
         summary,
         artworks.image_id,
