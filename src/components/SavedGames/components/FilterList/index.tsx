@@ -74,8 +74,6 @@ const FilterList = () => {
 
     activeIndicator.current!.style.left = `calc(${offsetLeft}px - 5px)`;
 
-    console.log(activeIndicator.current?.style.width);
-
     activeIndicator.current!.style.width = `calc(${offsetWidth}px)`;
   };
 
@@ -84,7 +82,9 @@ const FilterList = () => {
       <div
         className={styles.activeIndicator}
         ref={activeIndicator}
-        style={{ width: activeIndicator.current?.style.width + "px" }}
+        style={{
+          width: `calc(${activeIndicator.current?.style.width}px - 10xp)`,
+        }}
       />
 
       {filterElements.map(({ title, onClick, isActive }, i) => (
