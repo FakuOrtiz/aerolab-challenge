@@ -9,13 +9,9 @@ import SavedGamesList from "./components/SavedGamesList";
 const SavedGames = () => {
   const { savedGames } = useSavedGames();
 
-  if (!savedGames) {
-    return <p>Loading...</p>;
-  }
+  if (!savedGames) return <></>;
 
-  if (!savedGames.length) {
-    return <EmptySavedGames />;
-  }
+  if (!savedGames.length) return <EmptySavedGames />;
 
   return (
     <section className={styles.container}>

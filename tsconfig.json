@@ -22,8 +22,9 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@sass/*": ["./src/sass/*"]
+      "@hooks-global/*": ["./src/hooks-global/*"],
+      "@sass/*": ["./src/sass/*"],
+      "@services/*": ["./src/services/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

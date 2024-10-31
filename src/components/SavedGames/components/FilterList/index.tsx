@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import useFilter from "../../hooks/useFilter";
-import useWindowSize from "@/hooks/useWindowSize";
+import useWindowSize from "@/hooks-global/useWindowSize";
 
 const FilterList = () => {
   const activeIndicator = useRef<HTMLDivElement>(null);
