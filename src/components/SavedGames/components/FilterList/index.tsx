@@ -72,22 +72,14 @@ const FilterList = () => {
       styles.activeOption
     )[0] as HTMLLIElement;
 
-    console.log(`calc(${offsetWidth}px)`)
-
     activeIndicator.current!.style.left = `calc(${offsetLeft}px - 5px)`;
 
-    activeIndicator.current!.style.width = `calc(${offsetWidth}px)`;
+    activeIndicator.current!.style.width = `${offsetWidth}px`;
   };
 
   return (
     <ul className={styles.containerFilterList}>
-      <div
-        className={styles.activeIndicator}
-        ref={activeIndicator}
-        style={{
-          width: `calc(${activeIndicator.current?.style.width}px - 10xp)`,
-        }}
-      />
+      <div className={styles.activeIndicator} ref={activeIndicator} />
 
       {filterElements.map(({ title, onClick, isActive }, i) => (
         <li
