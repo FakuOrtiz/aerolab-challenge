@@ -1,6 +1,6 @@
 import { InputEvent } from "@/constants/customTypes";
-import { searchGames } from "@/services/game";
-import { ResultGame } from "@/services/game/game.model";
+import { searchGames } from "@/services/gameService";
+import { ResultGame } from "@/models/game.model";
 import { useCallback, useEffect, useState } from "react";
 
 const useSearchGames = () => {
@@ -10,7 +10,9 @@ const useSearchGames = () => {
 
   const getDefaultGames = useCallback(async () => {
     if (!defaultGames.length) {
-      const searchedGames = await searchGames<ResultGame[]>({ type: "DEFAULT" });
+      const searchedGames = await searchGames<ResultGame[]>({
+        type: "DEFAULT",
+      });
 
       if (searchedGames?.length) {
         setDefaultGames(searchedGames);

@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { ResultGame } from "@/services/game/game.model";
+import { ResultGame } from "@/models/game.model";
 import { ReactMouseEvent } from "@/constants/customTypes";
 
 interface Props {

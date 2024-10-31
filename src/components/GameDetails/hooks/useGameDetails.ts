@@ -1,5 +1,5 @@
-import { searchGames } from "@/services/game";
-import { Game } from "@/services/game/game.model";
+import { searchGames } from "@/services/gameService";
+import { Game } from "@/models/game.model";
 import { useEffect, useState } from "react";
 
 const useGameDetails = (id: string) => {

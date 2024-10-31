@@ -1,5 +1,4 @@
 import axios from "axios";
-import axiosClient from "../axios.config";
 
 interface Default {
   type: "DEFAULT";
@@ -22,9 +21,7 @@ export const searchGames = async <T>(params: Params): Promise<T> => {
 
   let body = "fields name, cover.image_id;";
 
-  if (type === "SEARCH") {
-    body += ` search "${params.name}";`;
-  }
+  if (type === "SEARCH") body += ` search "${params.name}";`;
 
   if (type === "DETAILS") {
     body = `
@@ -41,13 +38,18 @@ export const searchGames = async <T>(params: Params): Promise<T> => {
       where id = ${params.id};`;
   }
 
-  try {
-    const { data } = await axiosClient.post<T>("/games", body);
+  const postData = {
+    body,
+    token: localStorage.getItem("bearerToken"),
+  };
 
-    return data;
+  try {
+    const { data } = await axios.post<{ data: T }>("/api/games", postData);
+
+    return data.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
-      console.error("API:", error.response?.data);
+      console.error("FRONT RES:", error.response?.data);
     }
     throw error;
   }
