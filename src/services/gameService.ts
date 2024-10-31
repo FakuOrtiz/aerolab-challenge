@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getApiToken } from "./authService";
 
 interface Default {
   type: "DEFAULT";
@@ -38,10 +39,14 @@ export const searchGames = async <T>(params: Params): Promise<T> => {
       where id = ${params.id};`;
   }
 
-  const postData = {
-    body,
-    token: localStorage.getItem("bearerToken"),
-  };
+  let token = localStorage.getItem("bearerToken");
+
+  if (!token || token === "undefined") {
+    token = (await getApiToken()) as string;
+    localStorage.setItem("bearerToken", token);
+  }
+
+  const postData = { body, token };
 
   try {
     const { data } = await axios.post<{ data: T }>("/api/games", postData);
