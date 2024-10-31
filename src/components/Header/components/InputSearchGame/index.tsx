@@ -4,18 +4,30 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 import useSearchGames from "../../hooks/useSearchGames";
 import ResultsList from "../ResultsList";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const InputSearchGame = () => {
-  const [isWriting, setIsWriting] = useState(false);
+  const [isFocusedInput, setIsFocusedInput] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { input, updateInput, games, clearInput } = useSearchGames();
+
+  const hasAnyGames = games.length > 0;
+
+  const onPressX = () => {
+    if (input) {
+      return clearInput();
+    }
+
+    setIsFocusedInput(false);
+  };
 
   return (
     <div
       className={styles.inputContainer}
-      onFocus={() => setIsWriting(true)}
-      onBlur={() => setIsWriting(false)}
+      onFocus={() => setIsFocusedInput(true)}
+      onBlur={() => setIsFocusedInput(false)}
     >
       <Image
         src={"/header/search.svg"}
@@ -23,25 +35,34 @@ const InputSearchGame = () => {
         width={16}
         height={16}
         priority
-        className={isWriting ? styles.activeSearchImg : ""}
+        className={isFocusedInput ? styles.activeSearchImg : ""}
       />
 
       <input
         type="text"
         placeholder="Search games..."
+        ref={inputRef}
         value={input}
         onChange={updateInput}
-        className={isWriting && games.length > 0 ? styles.activeInput : ""}
+        className={isFocusedInput && hasAnyGames ? styles.activeInput : ""}
       />
 
       <button
-        className={isWriting ? styles.showX : styles.x}
-        onClick={clearInput}
+        className={isFocusedInput ? styles.showX : styles.x}
+        onClick={onPressX}
       >
         <Image src={"/x.svg"} alt="X" width={20} height={20} />
       </button>
 
-      {isWriting && games.length > 0 && <ResultsList games={games} />}
+      {isFocusedInput && hasAnyGames && (
+        <ResultsList
+          games={games}
+          removeInputFocus={() => {
+            setIsFocusedInput(false);
+            inputRef.current?.blur();
+          }}
+        />
+      )}
     </div>
   );
 };

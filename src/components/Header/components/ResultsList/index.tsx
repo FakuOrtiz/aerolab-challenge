@@ -2,8 +2,22 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { SearchedGame } from "@/services/game/game.model";
+import { ReactMouseEvent } from "@/constants/customTypes";
 
-const ResultsList = ({ games }: { games: SearchedGame[] }) => {
+interface Props {
+  games: SearchedGame[];
+  removeInputFocus: () => void;
+}
+
+const ResultsList = ({ games, removeInputFocus }: Props) => {
+  const onMouseDown = (e: ReactMouseEvent) => {
+    e.preventDefault();
+
+    setTimeout(() => {
+      removeInputFocus();
+    }, 100);
+  };
+
   return (
     <ul className={styles.container}>
       {games?.map((game) => {
@@ -15,7 +29,7 @@ const ResultsList = ({ games }: { games: SearchedGame[] }) => {
 
         return (
           <li key={game.id}>
-            <Link href={`/${game.id}`}>
+            <Link href={`/${game.id}`} onMouseDown={onMouseDown}>
               <Image src={imageUrl} alt={game.name} width={30} height={30} />
               {game.name}
             </Link>
