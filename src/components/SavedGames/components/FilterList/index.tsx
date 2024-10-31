@@ -72,6 +72,8 @@ const FilterList = () => {
       styles.activeOption
     )[0] as HTMLLIElement;
 
+    console.log(`calc(${offsetWidth}px)`)
+
     activeIndicator.current!.style.left = `calc(${offsetLeft}px - 5px)`;
 
     activeIndicator.current!.style.width = `calc(${offsetWidth}px)`;

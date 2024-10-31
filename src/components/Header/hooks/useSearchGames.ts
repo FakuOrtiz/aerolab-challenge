@@ -1,12 +1,29 @@
 import { InputEvent } from "@/constants/customTypes";
 import { searchGames } from "@/services/game";
 import { SearchedGame } from "@/services/game/game.model";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import data from "./exampleData.json";
 
 const useSearchGames = () => {
   const [input, setInput] = useState("");
   const [games, setGames] = useState<SearchedGame[]>([]);
-  const [recommendedGames, setRecommendedGames] = useState<SearchedGame[]>([]);
+  const [defaultGames, setDefaultGames] = useState<SearchedGame[]>([]);
+
+  const getDefaultGames = useCallback(async () => {
+    if (!defaultGames.length) {
+      // const searchedGames = await searchGames();
+      const searchedGames = data;
+
+      if (searchedGames?.length) {
+        setDefaultGames(searchedGames);
+        setGames(searchedGames);
+      }
+
+      return;
+    }
+
+    setGames(defaultGames);
+  }, [defaultGames]);
 
   // debounce
   useEffect(() => {
@@ -18,39 +35,24 @@ const useSearchGames = () => {
           if (searchedGames?.length) {
             setGames(searchedGames);
           } else {
-            getRecommendedGames();
+            getDefaultGames();
           }
         };
 
         onSearchGame();
       } else {
-        getRecommendedGames();
+        getDefaultGames();
       }
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [input]);
+  }, [input, getDefaultGames]);
 
   const updateInput = (e: InputEvent) => setInput(e.target.value);
 
   const clearInput = () => {
     setInput("");
-    getRecommendedGames();
-  };
-
-  const getRecommendedGames = async () => {
-    if (!recommendedGames.length) {
-      const searchedGames = await searchGames();
-
-      if (searchedGames?.length) {
-        setRecommendedGames(searchedGames);
-        setGames(searchedGames);
-      }
-
-      return;
-    }
-
-    setGames(recommendedGames);
+    getDefaultGames();
   };
 
   return { input, updateInput, games, clearInput };
