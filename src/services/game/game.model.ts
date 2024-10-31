@@ -6,5 +6,5 @@ interface Cover {
 export interface SearchedGame {
   id: number;
   name: string;
-  cover: Cover;
+  cover?: Cover;
 }

@@ -3,8 +3,12 @@ import axios from "axios";
 import { SearchedGame } from "./game.model";
 import axiosClient from "../axios.config";
 
-export const searchGame = async (name: string) => {
-  const body = `fields name, cover.image_id; search "${name}";`;
+export const searchGames = async (name?: string) => {
+  let body = "fields name, cover.image_id;";
+
+  if (name) {
+    body += ` search "${name}";`;
+  }
 
   try {
     const { data } = await axiosClient.post<SearchedGame[]>(
