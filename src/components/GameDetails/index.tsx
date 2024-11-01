@@ -18,6 +18,8 @@ const GameDetails = ({ id }: { id: string }) => {
 
   return (
     <section className={styles.container}>
+      <title>{game?.name}</title>
+
       <GameHero
         name={game.name}
         publisher={game?.involved_companies?.[0]?.company?.name}
