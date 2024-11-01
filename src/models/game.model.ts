@@ -6,6 +6,7 @@ export interface ResultGame {
 
 export interface SavedGame {
   id: number;
+  name: string;
   cover?: GameImage;
   first_release_date: number;
 }

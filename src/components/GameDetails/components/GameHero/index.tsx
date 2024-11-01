@@ -27,6 +27,7 @@ const GameHero = ({ gameId, name, publisher, cover, release }: Props) => {
 
     const game = {
       id: gameId,
+      name,
       first_release_date: release,
       cover,
     };

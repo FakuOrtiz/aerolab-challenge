@@ -1,4 +1,5 @@
 import { SavedGame } from "@/models/game.model";
+import { showToast } from "@/utils/showToast";
 import { useEffect, useState } from "react";
 
 const useSavedGames = () => {
@@ -33,6 +34,12 @@ const useSavedGames = () => {
       setSavedGames([game]);
       localStorage.setItem("games", JSON.stringify([game]));
     }
+
+    showToast({
+      type: "success",
+      title: "Game collected",
+      message: `${game.name} has been added to your collection`,
+    });
   };
 
   const removeSavedGame = (id: number) => {
@@ -40,10 +47,23 @@ const useSavedGames = () => {
       localStorage.getItem("games")!
     ) as SavedGame[];
 
-    localStorageGames = localStorageGames.filter((games) => games.id !== id);
+    let removedGameName = "";
+
+    localStorageGames = localStorageGames.filter((game) => {
+      if (game.id !== id) {
+        return game;
+      }
+      removedGameName = game.name;
+    });
 
     setSavedGames(localStorageGames);
     localStorage.setItem("games", JSON.stringify(localStorageGames));
+
+    showToast({
+      type: "error",
+      title: "Game removed",
+      message: `${removedGameName} has been removed from your collection`,
+    });
   };
 
   const orderSavedGames = (type: "last_added" | "newest" | "oldest") => {

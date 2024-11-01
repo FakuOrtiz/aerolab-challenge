@@ -1,0 +1,19 @@
+.toastContainer {
+  .titleContainer {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+
+    h4 {
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  p {
+    color: #666666;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 0.8rem;
+  }
+}
