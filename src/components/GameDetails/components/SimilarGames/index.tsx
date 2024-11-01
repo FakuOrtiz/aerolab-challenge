@@ -15,7 +15,7 @@ const SimilarGames = ({ similarGames }: Props) => {
         {similarGames.map((game) => {
           let imageUrl = "/default-cover.jpg";
 
-          if (game.cover.image_id) {
+          if (game?.cover?.image_id) {
             imageUrl = `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.webp`;
           }
 
