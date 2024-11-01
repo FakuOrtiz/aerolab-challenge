@@ -7,10 +7,16 @@
 
     img {
       border-radius: 8px;
+      max-width: 170px;
+      min-width: 170px;
+      max-height: 226px;
+      min-height: 226px;
 
       @media screen and (width <= 700px) {
-        width: 82px;
-        height: 110px;
+        max-width: 82px;
+        min-width: 82px;
+        max-height: 110px;
+        min-height: 110px;
       }
     }
 

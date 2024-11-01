@@ -1,3 +1,43 @@
 .container {
   width: 100%;
+  position: relative;
+
+  .navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba($color: #f2f2f2d9, $alpha: 0.85);
+    border: none;
+    border-radius: 100px;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+  }
+
+  .customPrev {
+    left: 10px;
+  }
+
+  .customNext {
+    right: 10px;
+  }
+}
+
+.swiper {
+  height: 10rem;
+  cursor: grab;
+  user-select: none;
+
+  .imageContainer {
+    height: 100%;
+    width: auto;
+    position: relative;
+
+    img {
+      border: 1px solid $color-gray-200;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
 }

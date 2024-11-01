@@ -10,15 +10,19 @@ interface Props {
 const GameInfo = ({ summary, platforms, gallery }: Props) => {
   return (
     <div className={styles.container}>
-      <article>
-        <h2>Summary</h2>
-        <p>{summary || "Unknown"}</p>
-      </article>
+      {summary && (
+        <article>
+          <h2>Summary</h2>
+          <p>{summary}</p>
+        </article>
+      )}
 
-      <article>
-        <h2>Platforms</h2>
-        <p>{platforms || "Unknown"}</p>
-      </article>
+      {platforms && (
+        <article>
+          <h2>Platforms</h2>
+          <p>{platforms}</p>
+        </article>
+      )}
 
       {gallery && gallery.length && (
         <article>
