@@ -28,15 +28,6 @@ const GameDetails = ({ id }: { id: string }) => {
 
   return (
     <>
-      <title>{game.name}</title>
-      <meta property="og:title" content={game.name} />
-      <meta property="og:description" content={game.summary || "No summary"} />
-      <meta property="og:image" content={ogImageUrl} />
-      <meta
-        property="og:url"
-        content={`https://aerolab.vercel.app/game/${game.id}`}
-      />
-
       <section className={styles.container}>
         <GameHero
           name={game.name}
@@ -64,6 +55,25 @@ const GameDetails = ({ id }: { id: string }) => {
           <SimilarGames similarGames={game?.similar_games} />
         )}
       </section>
+
+      {/* Dynamic open graph */}
+
+      <title>{game.name}</title>
+      <meta property="og:title" content={game.name} />
+      <meta property="og:description" content={game.summary || "No summary"} />
+      <meta property="og:image" content={ogImageUrl} />
+      <meta
+        property="og:url"
+        content={`https://aerolab.vercel.app/game/${game.id}`}
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={game.name} />
+      <meta name="twitter:description" content={game.summary || "No summary"} />
+      <meta name="twitter:image" content={ogImageUrl} />
+      <meta
+        name="twitter:url"
+        content={`https://aerolab.vercel.app/game/${game.id}`}
+      />
     </>
   );
 };
