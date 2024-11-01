@@ -4,6 +4,7 @@ import GameHero from "./components/GameHero";
 import GameInfo from "./components/GameInfo";
 import GameStats from "./components/GameStats";
 import NotFoundGame from "./components/NotFoundGame";
+import SimilarGames from "./components/SimilarGames";
 import useGameDetails from "./hooks/useGameDetails";
 import styles from "./styles.module.scss";
 
@@ -35,6 +36,10 @@ const GameDetails = ({ id }: { id: string }) => {
           .join(", ")}
         gallery={game?.artworks?.map((platform) => platform?.image_id)}
       />
+
+      {game?.similar_games && game?.similar_games.length > 0 && (
+        <SimilarGames similarGames={game?.similar_games} />
+      )}
     </section>
   );
 };

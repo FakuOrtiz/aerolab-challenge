@@ -4,6 +4,12 @@ export interface ResultGame {
   cover?: Image;
 }
 
+export interface SavedGame {
+  id: number;
+  cover?: Image;
+  first_release_date: number;
+}
+
 export interface Game {
   id: number;
   cover?: Image;
@@ -33,7 +39,7 @@ interface InvolvedCompany {
   company: Element;
 }
 
-interface SimilarGame {
+export interface SimilarGame {
   id: number;
   cover: Image;
 }
