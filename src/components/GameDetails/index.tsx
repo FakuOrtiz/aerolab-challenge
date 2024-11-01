@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     imageUrl = `https://images.igdb.com/igdb/image/upload/t_cover_big/${game?.cover.image_id}.png`;
   }
 
-  const ogImageUrl = `http://localhost:3000/api/og?title=${encodeURIComponent(
+  const ogImageUrl = `https://aerolab.vercel.app/api/og?title=${encodeURIComponent(
     game.name
   )}&img=${encodeURIComponent(imageUrl)}`;
 
