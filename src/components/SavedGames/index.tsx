@@ -8,7 +8,7 @@ import useSavedGames from "@/hooks-global/useSavedGames";
 import Loader from "../Loader";
 
 const SavedGames = () => {
-  const { savedGames, removeSavedGame } = useSavedGames();
+  const { savedGames, removeSavedGame, orderSavedGames } = useSavedGames();
 
   if (!savedGames) return <Loader />;
 
@@ -16,7 +16,7 @@ const SavedGames = () => {
 
   return (
     <section className={styles.container}>
-      <FilterList />
+      <FilterList orderSavedGames={orderSavedGames} />
 
       <ul className={styles.ul}>
         {savedGames.map((game) => {

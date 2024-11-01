@@ -5,7 +5,7 @@ const useSavedGames = () => {
   const [savedGames, setSavedGames] = useState<SavedGame[] | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && !savedGames) {
+    if (typeof window !== "undefined" && !savedGames) {
       const localStorageGames = localStorage.getItem("games");
 
       if (localStorageGames && localStorageGames !== "undefined") {
@@ -25,7 +25,7 @@ const useSavedGames = () => {
         localStorageGames as string
       ) as SavedGame[];
 
-      localStorageGames.push(game);
+      localStorageGames.unshift(game);
 
       setSavedGames(localStorageGames);
       localStorage.setItem("games", JSON.stringify(localStorageGames));
@@ -45,10 +45,37 @@ const useSavedGames = () => {
     setSavedGames(localStorageGames);
     localStorage.setItem("games", JSON.stringify(localStorageGames));
   };
+
+  const orderSavedGames = (type: "last_added" | "newest" | "oldest") => {
+    if (!savedGames?.length) return;
+
+    let orderedGames: SavedGame[] = [];
+
+    if (type === "last_added") {
+      const localStorageGames = localStorage.getItem("games")!;
+      orderedGames = JSON.parse(localStorageGames) as SavedGame[];
+    }
+
+    if (type === "newest") {
+      orderedGames = savedGames?.toSorted(
+        (a, b) => b?.first_release_date - a?.first_release_date
+      ) as SavedGame[];
+    }
+
+    if (type === "oldest") {
+      orderedGames = savedGames?.toSorted(
+        (a, b) => a?.first_release_date - b?.first_release_date
+      ) as SavedGame[];
+    }
+
+    setSavedGames(orderedGames);
+  };
+
   return {
     savedGames,
     removeSavedGame,
     saveGame,
+    orderSavedGames,
   };
 };
 

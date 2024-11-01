@@ -3,7 +3,11 @@ import styles from "./styles.module.scss";
 import useFilter from "../../hooks/useFilter";
 import useWindowSize from "@/hooks-global/useWindowSize";
 
-const FilterList = () => {
+interface Props {
+  orderSavedGames: (type: "last_added" | "newest" | "oldest") => void;
+}
+
+const FilterList = ({ orderSavedGames }: Props) => {
   const activeIndicator = useRef<HTMLDivElement>(null);
 
   const { filter, showLatest, showNewest, showOldest } = useFilter();
@@ -39,6 +43,7 @@ const FilterList = () => {
       onClick: () => {
         onMoveActiveIndicator();
         showLatest();
+        orderSavedGames("last_added");
       },
       isActive: filter === "LATEST",
     },
@@ -47,6 +52,7 @@ const FilterList = () => {
       onClick: () => {
         onMoveActiveIndicator();
         showNewest();
+        orderSavedGames("newest");
       },
       isActive: filter === "NEWEST",
     },
@@ -55,6 +61,7 @@ const FilterList = () => {
       onClick: () => {
         onMoveActiveIndicator();
         showOldest();
+        orderSavedGames("oldest");
       },
       isActive: filter === "OLDEST",
     },
