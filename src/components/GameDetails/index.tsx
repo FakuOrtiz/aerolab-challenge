@@ -9,18 +9,20 @@ import useGameDetails from "./hooks/useGameDetails";
 import styles from "./styles.module.scss";
 
 const GameDetails = ({ id }: { id: string }) => {
-  const { game, isLoading } = useGameDetails(id);
+  const { game, loading, error } = useGameDetails(id);
 
-  if (isLoading) return <></>;
+  if (error) return <NotFoundGame />;
 
-  if (!game) return <NotFoundGame />;
+  if (!game || loading) return <></>;
 
   return (
     <section className={styles.container}>
       <GameHero
         name={game.name}
         publisher={game?.involved_companies?.[0]?.company?.name}
-        coverId={game?.cover?.image_id}
+        gameId={game.id}
+        cover={game?.cover}
+        release={game.first_release_date}
       />
 
       <GameStats

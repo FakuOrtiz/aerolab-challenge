@@ -1,19 +1,19 @@
 export interface ResultGame {
   id: number;
   name: string;
-  cover?: Image;
+  cover?: GameImage;
 }
 
 export interface SavedGame {
   id: number;
-  cover?: Image;
+  cover?: GameImage;
   first_release_date: number;
 }
 
 export interface Game {
   id: number;
-  cover?: Image;
-  artworks?: Image[];
+  cover?: GameImage;
+  artworks?: GameImage[];
   first_release_date: number;
   genres?: Element[];
   involved_companies?: InvolvedCompany[];
@@ -24,7 +24,9 @@ export interface Game {
   summary: string;
 }
 
-interface Image {
+// -------------
+
+export interface GameImage {
   id: number;
   image_id: string;
 }
@@ -41,5 +43,5 @@ interface InvolvedCompany {
 
 export interface SimilarGame {
   id: number;
-  cover: Image;
+  cover: GameImage;
 }

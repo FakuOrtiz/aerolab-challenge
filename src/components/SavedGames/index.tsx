@@ -2,12 +2,12 @@
 
 import styles from "./styles.module.scss";
 import EmptySavedGames from "./components/EmptySavedGames";
-import useSavedGames from "./hooks/useSavedGames";
 import FilterList from "./components/FilterList";
 import GameCover from "../GameCover";
+import useSavedGames from "@/hooks-global/useSavedGames";
 
 const SavedGames = () => {
-  const { savedGames } = useSavedGames();
+  const { savedGames, removeSavedGame } = useSavedGames();
 
   if (!savedGames) return <></>;
 
@@ -30,7 +30,7 @@ const SavedGames = () => {
               key={game.id}
               id={String(game.id)}
               imageUrl={imageUrl}
-              showTrash
+              removeSavedGame={removeSavedGame}
             />
           );
         })}

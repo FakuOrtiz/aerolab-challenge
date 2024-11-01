@@ -4,23 +4,29 @@ import { useEffect, useState } from "react";
 
 const useGameDetails = (id: string) => {
   const [game, setGame] = useState<Game | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getGame = async () => {
-      setIsLoading(true);
+      setLoading(true);
+      setError(null);
 
-      const game = await searchGames<Game[]>({ type: "DETAILS", id });
+      try {
+        const game = await searchGames<Game[]>({ type: "DETAILS", id });
 
-      setGame(game[0]);
-
-      setIsLoading(false);
+        setGame(game[0]);
+      } catch (err: Error | unknown) {
+        setError(err as Error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     getGame();
   }, [id]);
 
-  return { game, isLoading };
+  return { game, loading, error };
 };
 
 export default useGameDetails;

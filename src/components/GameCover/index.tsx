@@ -5,18 +5,21 @@ import Image from "next/image";
 interface Props {
   id: string;
   imageUrl: string;
-  showTrash?: true;
+  removeSavedGame?: (id: number) => void;
 }
 
-const GameCover = ({ id, imageUrl, showTrash }: Props) => {
+const GameCover = ({ id, imageUrl, removeSavedGame }: Props) => {
   return (
     <li id={id} className={styles.li}>
-      <Link href={`/${id}`}>
+      <Link href={`/game/${id}`}>
         <Image src={imageUrl} alt={id} fill />
       </Link>
 
-      {showTrash && (
-        <button className={styles.trash}>
+      {removeSavedGame && (
+        <button
+          className={styles.trash}
+          onClick={() => removeSavedGame(Number(id))}
+        >
           <Image src={"/trash.svg"} alt="Trash" width={16} height={16} />
         </button>
       )}

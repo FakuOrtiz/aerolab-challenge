@@ -1,6 +1,15 @@
 .navContainer {
   width: 100%;
 
+  .backButton {
+    @include text-gradient($color-gradient);
+    @include appears-from-bottom;
+    display: flex;
+    gap: 0.5rem;
+    border: none;
+    font-weight: 600;
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -34,20 +43,10 @@
         @include text-gradient($color-gradient);
       }
     }
+  }
 
-    &.backContainer {
-      button {
-        display: flex;
-        gap: 0.5rem;
-        border: none;
-        @include text-gradient($color-gradient);
-        font-weight: 600;
-      }
-    }
-
-    img {
-      filter: invert(13%) sepia(44%) saturate(3298%) hue-rotate(255deg)
-        brightness(88%) contrast(103%);
-    }
+  img {
+    filter: invert(13%) sepia(44%) saturate(3298%) hue-rotate(255deg)
+      brightness(88%) contrast(103%);
   }
 }

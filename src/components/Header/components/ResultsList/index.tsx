@@ -29,7 +29,7 @@ const ResultsList = ({ games, removeInputFocus }: Props) => {
 
         return (
           <li key={game.id}>
-            <Link href={`/${game.id}`} onMouseDown={onMouseDown}>
+            <Link href={`/game/${game.id}`} onMouseDown={onMouseDown}>
               <Image src={imageUrl} alt={game.name} width={30} height={30} />
               {game.name}
             </Link>
