@@ -4,17 +4,14 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 const Logo = () => {
   const { id } = useParams<{ id: string }>();
 
-  const router = useRouter();
-
   return (
     <nav className={styles.navContainer}>
       {id && (
-        <button className={styles.backButton} onClick={() => router.back()}>
+        <Link href={"/"} className={styles.backButton}>
           <Image
             src={"/left-arrow.svg"}
             alt="Left arrow"
@@ -22,7 +19,7 @@ const Logo = () => {
             height={20}
           />
           Back
-        </button>
+        </Link>
       )}
 
       {!id && (
