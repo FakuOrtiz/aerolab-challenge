@@ -5,11 +5,12 @@ interface Props {
   type: "success" | "error";
   title: string;
   message: string;
+  onClose: () => void;
 }
 
-const CustomToast = ({ type, title, message }: Props) => {
+const CustomToast = ({ type, title, message, onClose }: Props) => {
   return (
-    <div className={styles.toastContainer}>
+    <div className={styles.toastContainer} onClick={onClose}>
       <div className={styles.titleContainer}>
         <Image src={`/toast/${type}.svg`} alt={type} width={16} height={16} />
 
