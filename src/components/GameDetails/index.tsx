@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "../Loader";
 import GameHero from "./components/GameHero";
 import GameInfo from "./components/GameInfo";
 import GameStats from "./components/GameStats";
@@ -13,7 +14,7 @@ const GameDetails = ({ id }: { id: string }) => {
 
   if (error) return <NotFoundGame />;
 
-  if (!game || loading) return <></>;
+  if (!game || loading) return <Loader />;
 
   return (
     <section className={styles.container}>

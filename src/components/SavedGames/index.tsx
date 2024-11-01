@@ -5,11 +5,12 @@ import EmptySavedGames from "./components/EmptySavedGames";
 import FilterList from "./components/FilterList";
 import GameCover from "../GameCover";
 import useSavedGames from "@/hooks-global/useSavedGames";
+import Loader from "../Loader";
 
 const SavedGames = () => {
   const { savedGames, removeSavedGame } = useSavedGames();
 
-  if (!savedGames) return <></>;
+  if (!savedGames) return <Loader />;
 
   if (!savedGames.length) return <EmptySavedGames />;
 
