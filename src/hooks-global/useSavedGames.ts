@@ -5,7 +5,7 @@ const useSavedGames = () => {
   const [savedGames, setSavedGames] = useState<SavedGame[] | null>(null);
 
   useEffect(() => {
-    if (document.readyState === "complete" && !savedGames) {
+    if (typeof window !== 'undefined' && !savedGames) {
       const localStorageGames = localStorage.getItem("games");
 
       if (localStorageGames && localStorageGames !== "undefined") {
