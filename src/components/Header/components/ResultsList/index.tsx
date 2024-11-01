@@ -18,8 +18,6 @@ const ResultsList = ({ games, removeInputFocus }: Props) => {
     }, 100);
   };
 
-  // TODO: Fix link padding
-
   return (
     <ul className={styles.container} onMouseDown={(e) => e.preventDefault()}>
       {games?.map((game) => {

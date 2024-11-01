@@ -40,11 +40,13 @@
     place-items: center;
     opacity: 0;
     cursor: text;
+    z-index: -1;
   }
 
   .showX {
     @extend .x;
     opacity: 1;
+    z-index: 1;
     cursor: pointer;
   }
 
