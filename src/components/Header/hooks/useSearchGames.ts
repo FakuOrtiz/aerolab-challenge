@@ -46,7 +46,7 @@ const useSearchGames = () => {
       } else {
         getDefaultGames();
       }
-    }, 500);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [input, getDefaultGames]);
