@@ -2,7 +2,6 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { ResultGame } from "@/models/game.model";
-import { ReactMouseEvent } from "@/constants/customTypes";
 
 interface Props {
   games: ResultGame[];
@@ -10,14 +9,6 @@ interface Props {
 }
 
 const ResultsList = ({ games, removeInputFocus }: Props) => {
-  const onMouseDown = (e: ReactMouseEvent) => {
-    e.preventDefault();
-
-    setTimeout(() => {
-      removeInputFocus();
-    }, 100);
-  };
-
   return (
     <ul className={styles.container} onMouseDown={(e) => e.preventDefault()}>
       {games?.map((game) => {
@@ -29,7 +20,7 @@ const ResultsList = ({ games, removeInputFocus }: Props) => {
 
         return (
           <li key={game.id}>
-            <Link href={`/game/${game.id}`} onMouseDown={onMouseDown}>
+            <Link href={`/game/${game.id}`} onClick={removeInputFocus}>
               <Image src={imageUrl} alt={game.name} width={30} height={30} />
               {game.name}
             </Link>
