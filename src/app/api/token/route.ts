@@ -15,7 +15,10 @@ export async function GET() {
     return NextResponse.json({ token: data.access_token });
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
-      return NextResponse.json({ message: error.response?.data });
+      return NextResponse.json(
+        { message: error.response?.data },
+        { status: 400 }
+      );
     }
   }
 }

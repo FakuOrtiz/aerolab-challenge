@@ -26,16 +26,19 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ data });
   } catch (error: unknown) {
-    console.log(error)
     if (axios.isAxiosError(error)) {
-      return NextResponse.json({
-        message: error.response?.data,
-        status: error.response?.status,
-      });
+      return NextResponse.json(
+        {
+          message: error.response?.data,
+        },
+        { status: error.response?.status }
+      );
     }
-    return NextResponse.json({
-      message: "An unknown error occurred",
-      status: 500,
-    });
+    return NextResponse.json(
+      {
+        message: "An unknown error occurred",
+      },
+      { status: 500 }
+    );
   }
 }
