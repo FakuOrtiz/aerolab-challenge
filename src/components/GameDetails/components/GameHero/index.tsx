@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 interface Props {
   name: string;
-  publisher: string;
+  publisher?: string;
   coverId?: string;
 }
 
@@ -22,7 +22,7 @@ const GameHero = ({ name, publisher, coverId }: Props) => {
         <div>
           <h1>{name}</h1>
 
-          <h2>{publisher}</h2>
+          <h2>{publisher || "Unknown"}</h2>
 
           <button className={`${styles.collectBtn} ${styles.desktopBtn}`}>
             Collect game

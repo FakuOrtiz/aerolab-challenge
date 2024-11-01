@@ -7,12 +7,12 @@ export interface ResultGame {
 export interface Game {
   id: number;
   cover?: Image;
-  artworks: Image[];
+  artworks?: Image[];
   first_release_date: number;
-  genres: Element[];
-  involved_companies: InvolvedCompany[];
+  genres?: Element[];
+  involved_companies?: InvolvedCompany[];
   name: string;
-  platforms: Element[];
+  platforms?: Element[];
   rating: number;
   similar_games: SimilarGame[];
   summary: string;

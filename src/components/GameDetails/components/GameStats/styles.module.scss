@@ -10,10 +10,10 @@
     align-items: center;
     display: inline-flex;
     gap: 0.4rem;
-    margin-right: 0.8rem;
 
     &:not(:last-child) {
       margin-bottom: 0.8rem;
+      margin-right: 0.8rem;
     }
 
     img {

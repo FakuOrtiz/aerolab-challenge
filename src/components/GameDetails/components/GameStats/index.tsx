@@ -2,9 +2,9 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 
 interface Props {
-  rating: number;
-  release: number;
-  genre: string;
+  rating?: number;
+  release?: number;
+  genre?: string;
 }
 
 const GameStats = ({ rating, release, genre }: Props) => {
@@ -12,17 +12,19 @@ const GameStats = ({ rating, release, genre }: Props) => {
     {
       icon: "/game-details/star.svg",
       name: "Rating",
-      value: (rating / 10).toFixed(1),
+      value: rating ? (rating / 10).toFixed(1) : "Unknown",
     },
     {
       icon: "/game-details/calendar.svg",
       name: "Release",
-      value: new Date(release * 1000).toLocaleDateString("es-ES"),
+      value: release
+        ? new Date(release * 1000).toLocaleDateString("es-ES")
+        : "Unknown",
     },
     {
       icon: "/game-details/puzzle.svg",
       name: "Genre",
-      value: genre,
+      value: genre ?? "Unknown",
     },
   ];
 

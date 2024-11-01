@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 
 const GameDetails = ({ id }: { id: string }) => {
   const { game, isLoading } = useGameDetails(id);
+
   if (isLoading) return <></>;
 
   if (!game) return <NotFoundGame />;
@@ -17,17 +18,23 @@ const GameDetails = ({ id }: { id: string }) => {
     <section className={styles.container}>
       <GameHero
         name={game.name}
-        publisher={game.involved_companies[0].company.name}
+        publisher={game?.involved_companies?.[0]?.company?.name}
         coverId={game?.cover?.image_id}
       />
 
       <GameStats
         rating={game.rating}
         release={game.first_release_date}
-        genre={game.genres.map((genre) => genre.name).join(", ")}
+        genre={game?.genres?.map((genre) => genre?.name).join(", ")}
       />
 
-      <GameInfo />
+      <GameInfo
+        summary={game.summary}
+        platforms={game?.platforms
+          ?.map((platform) => platform?.name)
+          .join(", ")}
+        gallery={game?.artworks?.map((platform) => platform?.image_id)}
+      />
     </section>
   );
 };
