@@ -17,9 +17,10 @@ const GameStats = ({ rating, release, genre }: Props) => {
     {
       icon: "/game-details/calendar.svg",
       name: "Release",
-      value: release
-        ? new Date(release * 1000).toLocaleDateString("es-ES")
-        : "Unknown",
+      value:
+        release && release !== -2208988800
+          ? new Date(release * 1000).toLocaleDateString("es-ES")
+          : "Unknown",
     },
     {
       icon: "/game-details/puzzle.svg",
